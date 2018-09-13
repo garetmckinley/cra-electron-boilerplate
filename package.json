@@ -1,0 +1,37 @@
+{
+  "name": "cra-electron",
+  "version": "0.1.0",
+  "main": "public/electron.js",
+  "author": "Garet McKinley <self@garet.io>",
+  "homepage": "./",
+  "private": true,
+  "dependencies": {
+    "electron-is-dev": "^0.3.0",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-scripts": "1.1.5"
+  },
+  "scripts": {
+    "start": "concurrently \"BROWSER=none react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "prebuild": "react-scripts build",
+    "build": "npx build --x64 --linux --c.extraMetadata.main=build/electron.js"
+  },
+  "build": {
+    "appId": "com.example.electron-cra",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "electron": "^2.0.9",
+    "electron-builder": "^20.28.4",
+    "wait-on": "^3.0.1"
+  }
+}
